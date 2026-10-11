@@ -1,50 +1,63 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# AI Architecture Casebook Constitution
+
+A public repository of real-world AI system design case studies. Each case study ships a design doc, Architecture Decision Records (ADRs), and proof-of-concept (POC) code on AWS or GCP.
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Architecture Decisions First
+Every POC implements a decision recorded in an ADR. Code links to the ADR it proves (module docstring or README reference). A POC with no ADR is not accepted; if the code reveals the decision was wrong, update the ADR first.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Security by Construction
+- Access-control filters are built only from verified identity claims (e.g., validated token claims), never from user input or model output.
+- No secrets in code or config files. Credentials come from the environment or a secrets manager.
+- Security-relevant behavior is covered by tests that attempt to violate it (e.g., a prompt-injected query must not widen a filter).
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Synthetic Data Only
+No real company, customer, or personal data, ever. All datasets, names, documents, and scenarios are synthetic and labeled as such. Case studies describing real-world patterns must be generalized and anonymized.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Evaluation Is Mandatory
+- Every POC ships an evaluation script that produces a Markdown results table.
+- Acceptance criteria from the spec become automated tests.
+- Claims in a design doc or ADR about quality, latency, or cost must be backed by the evaluation output or explicitly marked as unverified.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Cost Control
+- Every cloud resource is created with Terraform.
+- Every POC has a one-command teardown (e.g., `terraform destroy` in the POC's `infra/` folder).
+- Nothing is left running; READMEs state expected cost and teardown steps up front.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### VI. Simplicity
+Write the smallest code that proves the decision. No production plumbing (UIs, CI pipelines, full networking) unless the spec requires it. Complexity must be justified in the ADR or spec.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### VII. Python Standards
+Python 3.12 managed with uv; pytest for tests; type hints on all functions; small, single-purpose functions; ruff for linting and formatting. Dependencies are declared in `pyproject.toml` and locked.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### VIII. Human Review
+The author reviews every change, including AI-generated ones. Security-critical code (access-control filters, authentication, evaluation core) is written or rewritten by the author, not accepted blindly from generated output.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### IX. Reproducibility
+Every POC folder has a README that runs from a fresh clone in under 10 minutes: prerequisites, setup, run, evaluate, teardown. Steps are copy-pasteable and tested on a clean checkout.
+
+## Required Layout per Case Study
+Each case study lives in a numbered folder (e.g. `01-permission-aware-rag/`) containing:
+- `docs/design.md`
+- `docs/adr/` (numbered ADRs using `templates/adr-template.md`)
+- `docs/diagrams/`
+- `specs/` (Spec Kit artifacts per POC)
+- `src/` (code and tests)
+- `infra/` (Terraform with one-command teardown)
+- `evals/` (datasets and results tables)
+- `README.md` (run, evaluate, teardown, results)
+
+Shared reusable code lives in `shared/`.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution supersedes other practices. Every spec, plan, and review must check compliance with these principles.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- **Amendments**: require a recorded rationale and a version bump. The repository author approves every amendment.
+- **Versioning**: amendments follow semantic versioning.
+  - MAJOR: remove or redefine a principle.
+  - MINOR: add a principle or materially expand guidance.
+  - PATCH: wording and clarifications.
+- **Compliance review**: compliance is reviewed at the Reconcile stage of every case study. Any deviation is recorded and justified in that case study's ADRs.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-10-11 | **Last Amended**: 2026-10-11
