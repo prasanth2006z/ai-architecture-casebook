@@ -39,6 +39,7 @@ The author needs proof that a POC never returns documents the asking user is not
 1. **Given** a question where the retrieval returns a not-entitled document, **When** metrics are computed, **Then** the cross-entitlement count increases by one for each such result.
 2. **Given** a not-entitled document that is also the expected document, **When** it is returned, **Then** it is still counted as a cross-entitlement retrieval.
 3. **Given** a run with no not-entitled documents returned, **When** the table is produced, **Then** the cross-entitlement count shows 0.
+4. **Given** a returned result whose document id is missing or empty, **When** metrics are computed, **Then** that result is counted as a cross-entitlement retrieval (entitlement cannot be verified), and the question is recorded as an error and counted as a miss for hit rate, section hit rate, and mean reciprocal rank.
 
 ---
 
@@ -87,7 +88,7 @@ The author wants to know not only whether the right document was retrieved but w
 1. **Given** a question with an expected section, **When** results contain the expected document but a different section in the top k, **Then** it counts as a document hit and a section miss.
 2. **Given** a question with an expected section, **When** results contain the expected document and section in the top k, **Then** it counts as both a document hit and a section hit.
 3. **Given** a question without an expected section, **When** metrics are computed, **Then** it is excluded from section hit rate and still counts toward document hit rate.
-4. **Given** a question whose retrieval or answer capability fails, **When** metrics are computed, **Then** it is counted as a miss in every metric and the table shows the error count for that configuration.
+4. **Given** a question whose retrieval or answer capability fails, **When** metrics are computed, **Then** it is counted as a miss for hit rate, section hit rate, and mean reciprocal rank, and the table shows the error count for that configuration.
 
 ---
 
@@ -110,12 +111,13 @@ A reader clones the repository and reproduces a case study's published results t
 - A retrieval returns an empty result list: the question counts as a miss (no hit, reciprocal rank 0) and the run continues.
 - A metric category has zero questions (for example, no should-refuse questions): that metric is reported as "n/a" with a clear note, never as a division error or a misleading 0%.
 - The question file is missing, unreadable, or malformed (missing field, wrong type, duplicate question id, empty file): the harness stops before evaluating and reports which file, which question, and which field is wrong.
-- The retrieval or answer capability raises an error for one question: the failure is recorded for that question with its message, the question counts as a miss in every metric, the run continues, and the table reports the error count.
+- The retrieval or answer capability raises an error for one question: the failure is recorded for that question with its message, the question counts as a miss for hit rate, section hit rate, and mean reciprocal rank, the run continues, and the table reports the error count.
 - The expected document is not returned in the top k: it counts as a miss at k but may still contribute to reciprocal rank if it appears lower in the ranking.
 - The expected document appears in the top k but only under a different section: document hit, section miss.
 - A question has no expected section: it is excluded from section hit rate only.
 - A should-refuse question has no expected document: hit rate, section hit rate, and reciprocal rank exclude it.
 - There are no should-answer questions (or no should-refuse questions): false-refusal rate (or correct-refusal rate) is reported as "n/a".
+- A returned result has a missing, empty, or non-text document id: fail closed. It counts as a cross-entitlement retrieval because its entitlement cannot be verified, and the question is recorded as an error, which scores as a miss for hit rate, section hit rate, and mean reciprocal rank. All other results for that question are still checked for entitlement.
 - A cited chunk id appears in a different question's results but not this question's: it is invalid.
 - Fewer results are returned than k: k is applied to what was returned, with no padding.
 
@@ -130,7 +132,7 @@ A reader clones the repository and reproduces a case study's published results t
 - **FR-005**: The harness MUST compute hit rate at k, where a hit means the expected document appears in the top k results. The value of k MUST be configurable, with a default of 5.
 - **FR-005a**: The harness MUST also compute section hit rate at k for questions that have an expected section, where a hit means a result in the top k matches both the expected document and the expected section. Questions without an expected section MUST be excluded from this metric. Document-level hit rate remains the primary metric and MUST be listed first in the table.
 - **FR-006**: The harness MUST compute mean reciprocal rank based on the position of the first result matching the expected document, counting 0 when absent.
-- **FR-007**: The harness MUST count cross-entitlement retrievals as the number of returned results whose document is on the question's not-entitled list. This MUST apply regardless of whether that document is also the expected document, and regardless of rank.
+- **FR-007**: The harness MUST count cross-entitlement retrievals as the number of returned results whose document is on the question's not-entitled list. This MUST apply regardless of whether that document is also the expected document, and regardless of rank. A returned result with a missing, empty, or non-text document id MUST also be counted as a cross-entitlement retrieval (fail closed, since entitlement cannot be verified), and its question MUST be recorded as an error (see FR-014a).
 - **FR-008**: The harness MUST compute latency p50 and p95 per configuration, measured around each retrieval call.
 - **FR-009**: The harness MUST compute correct-refusal rate as the share of should-refuse questions that the answer capability refused, and false-refusal rate as the share of should-answer questions that it refused, when an answer capability is supplied.
 - **FR-010**: The harness MUST compute citation validity as the share of answers in which every cited chunk id was among the chunks retrieved for that question, when an answer capability is supplied.
@@ -138,7 +140,7 @@ A reader clones the repository and reproduces a case study's published results t
 - **FR-012**: The harness MUST output a Markdown results table, ready to paste into a README or article, with one row per configuration.
 - **FR-013**: The harness MUST output a machine-readable results file listing per-question outcomes (returned results, hit, reciprocal rank, cross-entitlement count, latency, refusal and citation outcomes, and any error), labeled by configuration.
 - **FR-014**: The harness MUST handle empty result lists, zero-question categories, and per-question capability errors with clear messages, and MUST NOT crash.
-- **FR-014a**: A question whose retrieval or answer capability fails MUST be counted as a miss in every metric (see Assumptions), MUST stay in all metric denominators, and MUST be counted in a per-configuration error count shown in the results table.
+- **FR-014a**: Any question recorded as an error, for any reason (a capability failure or an unverifiable result), MUST be counted as a miss for hit rate, section hit rate, and mean reciprocal rank, and as failed for the answer-based metrics (see Assumptions). It MUST stay in all metric denominators and MUST be counted in a per-configuration error count shown in the results table. Error handling MUST NOT reduce the cross-entitlement total: results with an unverifiable document id still count toward it.
 - **FR-015**: The harness MUST produce identical metric values and per-question outcomes for identical inputs, excluding latency.
 - **FR-016**: The harness MUST operate entirely locally, with no calls to any cloud service, and MUST be reusable by every case study without modification.
 - **FR-017**: The repository MUST include a synthetic 3-question sample set and a stand-in retrieval capability that demonstrate an end-to-end run.
@@ -160,7 +162,7 @@ A reader clones the repository and reproduces a case study's published results t
 
 - **SC-001**: The author can go from a question set and a retrieval capability to a finished results table in a single command.
 - **SC-002**: The 3-question sample set runs end to end and produces a results table and a results file.
-- **SC-003**: 100% of results on a not-entitled list are counted as cross-entitlement retrievals in the test suite, including the case where the document is also the expected one.
+- **SC-003**: 100% of results on a not-entitled list, and 100% of results with a missing or empty document id, are counted as cross-entitlement retrievals in the test suite, including the case where the document is also the expected one.
 - **SC-004**: Two runs on identical inputs produce identical results files, apart from latency fields.
 - **SC-005**: Every malformed-input case in the edge-case list produces a human-readable message naming the problem, with zero unhandled crashes.
 - **SC-006**: A reader can reproduce a published results table from a fresh clone in under 10 minutes, per the casebook's reproducibility principle.
@@ -179,5 +181,7 @@ A reader clones the repository and reproduces a case study's published results t
 - Question sets are stored in a plain-text structured file format chosen at planning time, and all content is synthetic, per the casebook's synthetic-data principle.
 - The harness lives in the shared code area of the casebook (`shared/`) and follows the casebook's Python standards.
 - Correct-refusal rate uses should-refuse questions as its denominator, and false-refusal rate uses all other questions.
-- A failed question counts as: no document hit, no section hit, reciprocal rank 0, not a correct refusal, not a refusal (so it adds no false refusal, but is visible in the error count), and invalid citations. It contributes no results, so its cross-entitlement count is 0, and its latency is excluded from p50/p95. The error count is the signal that the numbers include failures.
+- Any question recorded as an error, for any reason (the retrieval or answer capability raised, or a returned result had an unverifiable document id), counts as: no document hit, no section hit, reciprocal rank 0, not a correct refusal, not a refusal (so it adds no false refusal, but is visible in the error count), and invalid citations. It stays in every denominator it would otherwise belong to. Its latency is excluded from p50/p95. The error count is the signal that the numbers include failures.
+- Error handling never lowers the cross-entitlement total. Every result a capability did return is still checked, and each result with a missing, empty, or non-text document id is counted as a cross-entitlement retrieval, even though its question scores as a miss. A capability that raised an error returned nothing, so it adds 0.
+- When a returned result has an unverifiable document id, the answer capability is not called for that question, because its retrieved results cannot be trusted.
 - LLM-as-judge grading (planned for Post 4), cloud service calls, and any user interface are out of scope.
