@@ -41,21 +41,21 @@ No `NEEDS CLARIFICATION` items remained after the spec and the plan input. The d
 ## R7. Entitlement matching (security-critical)
 
 - **Decision**: exact, case-sensitive string equality between each returned result's document id and the entries on the question's not-entitled list, counted per returned result across **all** returned results (not only top k), regardless of rank or expected document. A result whose document id is missing, empty, or not text **fails closed**: it is counted as a cross-entitlement retrieval (entitlement cannot be verified) AND its question is recorded as an error (`stage: "validate"`). All other results of that question are still checked for entitlement, but the question scores as a miss for hit rate, section hit rate and MRR like any other error (see R8).
-- **Rationale**: fail closed. Normalizing (case, whitespace) could hide a real leak or invent a match; exact matching keeps the check auditable. Counting all returned results matters because a leak at rank 20 is still a leak. An unverifiable result must never lower the leak count.
-- **Alternatives**: top-k only (understates leaks); normalized matching (ambiguous); error only without counting (could hide a leak, rejected by the author).
-- **Decided by the author**: fail closed, count and error. The leak count therefore means "results proven forbidden or not provably allowed".
+- **Rationale**: fail closed. Normalizing (case, whitespace) could hide a real cross-entitlement retrieval or invent a match; exact matching keeps the check auditable. Counting all returned results matters because a cross-entitlement retrieval at rank 20 is still one. An unverifiable result must never lower the cross-entitlement count.
+- **Alternatives**: top-k only (understates the count); normalized matching (ambiguous); error only without counting (could hide a cross-entitlement retrieval, rejected by the author).
+- **Decided by the author**: fail closed, count and error. The cross-entitlement count therefore means "results proven forbidden or not provably allowed".
 - **Ownership**: the author writes `entitlement.py` (Principle VIII). Tasks provide the failing tests and a stub.
 - **Record**: this rule must be stated in ADR-001 (see plan.md).
 
 ## R8. Error handling
 
 - **Decision**: one rule for every error. A question is recorded as an error (`{stage, type, message}`, stage `retrieve`, `answer` or `validate`) when `retrieve` or `answer` raises, or a returned result has an unverifiable document id. Any errored question scores as a miss for hit rate, section hit rate and MRR (no hit, rank contribution 0), as not a correct refusal, not a refusal, and invalid citations, stays in all denominators, and is excluded from the latency percentiles. Harness bugs (e.g. in metrics) are not caught.
-- **Entitlement exception**: errors never lower the cross-entitlement total. Results the capability did return are still checked, and unverifiable ones count (R7). A `validate` error skips the `answer` call, since the retrieved results cannot be trusted.
+- **Entitlement exception**: errors never lower the cross-entitlement total. Results the function did return are still checked, and unverifiable ones count (R7). A `validate` error skips the `answer` call, since the retrieved results cannot be trusted.
 - **Rationale**: FR-014a without hiding defects in the harness itself; a single rule keeps published numbers easy to explain.
 
 ## R9. Markdown table
 
-- **Decision**: one row per configuration. Columns, in order: Configuration, Hit@k, Section hit@k, MRR, Cross-entitlement, Latency p50 (ms), Latency p95 (ms), Errors, then (only when an answer function exists) Correct refusal, False refusal, Citation validity. Rates show as percentages to one decimal with the count in the cell's raw form in the JSON; "n/a" where undefined. A footer line states k, question count, and question file name.
+- **Decision**: one row per configuration. Columns, in order: Configuration, Hit@k, Section hit@k, MRR, Cross-entitlement, Latency p50 (ms), Latency p95 (ms), Errors, then (only when an answer function exists) Correct refusal, False refusal, Citation validity. Rates show as percentages to one decimal with the count in the cell's raw form in the JSON; "n/a" where undefined. A footer line states k, question count, and question file name, followed by one notes line per "n/a" cell explaining why (for example "False refusal: n/a, no should-answer questions"). Section hit rate is "n/a" only when no result in the configuration carries a section; otherwise a result without a section never matches an expected section. When only some configurations have an answer function, the answer columns show "n/a" for the others.
 - **Rationale**: pasteable into a README; primary metric first per FR-005a.
 
 ## R10. Dev tooling

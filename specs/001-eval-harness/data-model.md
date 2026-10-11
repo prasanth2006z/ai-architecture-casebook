@@ -54,7 +54,7 @@ All types are immutable dataclasses in `evals/models.py`. Field names match the 
 | `configuration` | string | |
 | `results` | list of RetrievalResult | as returned, in order; empty when the callable raised; kept in full when a result had an unverifiable document id |
 | `document_hit` | boolean or null | expected document in top k; false for any errored question; null when the question has no expected document (excluded from the rate) |
-| `section_hit` | boolean or null | false for any errored question that has an expected section; null when no expected section |
+| `section_hit` | boolean or null | false for any errored question that has an expected section; null when no expected section; false when the question has an expected section but no returned result matches it, including when results carry no section |
 | `reciprocal_rank` | number or null | 0 for any errored question that has an expected document; null when no expected document |
 | `cross_entitlement_count` | integer | across all returned results; includes results with an unverifiable document id |
 | `latency_ms` | number or null | null for any errored question (excluded from percentiles) |

@@ -35,3 +35,4 @@
 - Defaults chosen instead of clarification: k = 5, document-level primary metric with section hit rate as secondary, file format deferred to planning.
 - Re-validated 2026-10-11 after adding section hit rate, false-refusal rate, and error-as-miss handling: all items pass.
 - Re-validated 2026-10-11 after the fail-closed entitlement rule and the unified error rule (any errored question is a miss for hit rate, section hit rate and MRR; unverifiable results still count toward the cross-entitlement total): all items pass, no `[NEEDS CLARIFICATION]` markers, and the error wording is identical in FR-007, FR-014a, User Story 2 and 5, edge cases and assumptions.
+- Re-validated 2026-10-11 after the analysis fixes (missing-section rule, nearest-rank percentiles, n/a notes, mixed answer configurations, terminology): all items pass.

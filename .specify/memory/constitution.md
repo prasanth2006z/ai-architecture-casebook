@@ -32,7 +32,9 @@ Write the smallest code that proves the decision. No production plumbing (UIs, C
 Python 3.12 managed with uv; pytest for tests; type hints on all functions; small, single-purpose functions; ruff for linting and formatting. Dependencies are declared in `pyproject.toml` and locked.
 
 ### VIII. Human Review
-The author reviews every change, including AI-generated ones. Security-critical code (access-control filters, authentication, evaluation core) is written or rewritten by the author, not accepted blindly from generated output.
+The author reviews every change, including AI-generated ones.
+- Security-critical code (access-control filters, authentication, entitlement checks) is written by the author, not accepted from generated output.
+- Evaluation-core code (metric calculations) may be drafted by Claude, but the author reviews it line by line and rewrites any part they cannot explain.
 
 ### IX. Reproducibility
 Every POC folder has a README that runs from a fresh clone in under 10 minutes: prerequisites, setup, run, evaluate, teardown. Steps are copy-pasteable and tested on a clean checkout.
@@ -60,4 +62,6 @@ This constitution supersedes other practices. Every spec, plan, and review must 
   - PATCH: wording and clarifications.
 - **Compliance review**: compliance is reviewed at the Reconcile stage of every case study. Any deviation is recorded and justified in that case study's ADRs.
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-11 | **Last Amended**: 2026-10-11
+- **Amendment 1.0.1 (2026-10-11, PATCH)**: Principle VIII now separates security-critical code (author-written) from evaluation-core code (Claude may draft; the author reviews line by line and rewrites what they cannot explain). Rationale: the earlier wording "written or rewritten" was ambiguous for metric calculations, and a clarification avoids two readings of the same rule.
+
+**Version**: 1.0.1 | **Ratified**: 2026-10-11 | **Last Amended**: 2026-10-11
