@@ -17,6 +17,8 @@ evals run --questions FILE --config SPEC [--config SPEC ...] [--k N] [--out-dir 
 - Exit code 0 when the run completes, even if some questions errored (the error count is in the table).
 - Exit code 2 for usage errors, an unreadable or malformed question file, or a configuration that cannot be loaded. The message goes to stderr and names the cause. No traceback.
 - Makes no network calls.
+- A `module:attr` spec is imported with the current directory on the import path; a `file.py:attr` spec is loaded from that file.
+- The table headers carry the actual cutoff, for example `Hit@5`, `Section hit@5` and `MRR@5`.
 
 ## Example
 

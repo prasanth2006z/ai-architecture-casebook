@@ -113,7 +113,7 @@ A reader clones the repository and reproduces a case study's published results t
 - A metric category has zero questions (for example, no should-refuse questions): that metric is reported as "n/a", never as a division error or a misleading 0%, and a notes line below the table explains each "n/a" (for example "False refusal: n/a, no should-answer questions").
 - The question file is missing, unreadable, or malformed (missing field, wrong type, duplicate question id, empty file): the harness stops before evaluating and reports which file, which question, and which field is wrong.
 - The retrieval or answer function raises an error for one question: the failure is recorded for that question with its message, the question counts as a miss for hit rate, section hit rate, and mean reciprocal rank, the run continues, and the table reports the error count.
-- The expected document is not returned in the top k: it counts as a miss at k but may still contribute to reciprocal rank if it appears lower in the ranking.
+- The expected document is not returned in the top k: it counts as a miss at k and contributes 0 to MRR@k, even if it appears lower in the ranking.
 - The expected document appears in the top k but only under a different section: document hit, section miss.
 - A question has no expected section: it is excluded from section hit rate only.
 - A question has an expected section but the returned results carry no section: a section miss (a result without a section never matches), and the question stays in the section hit rate denominator.
@@ -133,7 +133,7 @@ A reader clones the repository and reproduces a case study's published results t
 - **FR-004**: The harness MUST optionally run an answer function supplied by the POC, which returns answer text, cited chunk ids, and a refused flag.
 - **FR-005**: The harness MUST compute hit rate at k, where a hit means the expected document appears in the top k results. The value of k MUST be configurable, with a default of 5.
 - **FR-005a**: The harness MUST also compute section hit rate at k for questions that have an expected section, where a hit means a result in the top k matches both the expected document and the expected section. Questions without an expected section MUST be excluded from this metric. Document-level hit rate remains the primary metric and MUST be listed first in the table.
-- **FR-006**: The harness MUST compute mean reciprocal rank based on the position of the first result matching the expected document, counting 0 when absent.
+- **FR-006**: The harness MUST compute mean reciprocal rank at k (MRR@k) based on the position of the first result matching the expected document among the top k results, counting 0 when the document is not in the top k. Quality metrics (hit rate, section hit rate, MRR@k) use only the top k; the cross-entitlement check uses all returned results.
 - **FR-007**: The harness MUST count cross-entitlement retrievals as the number of returned results whose document is on the question's not-entitled list. This MUST apply regardless of whether that document is also the expected document, and regardless of rank. A returned result with a missing, empty, or non-text document id MUST also be counted as a cross-entitlement retrieval (fail closed, since entitlement cannot be verified), and its question MUST be recorded as an error (see FR-014a).
 - **FR-008**: The harness MUST compute latency p50 and p95 per configuration using the nearest-rank method, measured around each retrieval call.
 - **FR-009**: The harness MUST compute correct-refusal rate as the share of should-refuse questions that the answer function refused, and false-refusal rate as the share of should-answer questions that it refused, when an answer function is supplied.
@@ -180,7 +180,7 @@ A reader clones the repository and reproduces a case study's published results t
 - When some configurations in a run have an answer function and others do not, the answer-based columns appear in the table, and the configurations without an answer function show "n/a" in them.
 - Latency percentiles use the nearest-rank method: the value at sorted position `ceil(p/100 × n)`. For small question sets p95 therefore equals the maximum.
 - Section matching is exact on the section identifier given in the question set.
-- Reciprocal rank is based on the first result from the expected document.
+- Reciprocal rank is based on the first result from the expected document within the top k (MRR@k), consistent with hit rate. Only the cross-entitlement check looks beyond the top k.
 - The default k is 5, and the author can change it per run.
 - Latency is wall-clock time of each retrieval call, so it is the only value that varies between runs.
 - Question sets are stored in a plain-text structured file format chosen at planning time, and all content is synthetic, per the casebook's synthetic-data principle.

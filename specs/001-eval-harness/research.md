@@ -23,7 +23,7 @@ No `NEEDS CLARIFICATION` items remained after the spec and the plan input. The d
 
 ## R4. Percentile method
 
-- **Decision**: nearest-rank percentile on the sorted list of successful-call latencies in milliseconds: value at index `ceil(p/100 * n) - 1`.
+- **Decision**: nearest-rank percentile on the sorted list of successful-call latencies in milliseconds: value at index `ceil(p/100 * n) - 1`, computed with integer arithmetic (`p` is a whole number, index `-(-p * n // 100) - 1`) so there is no floating-point rounding.
 - **Rationale**: deterministic, no interpolation surprises, standard library, easy to explain in an article. With few questions p95 equals the max, and the README says so.
 - **Alternatives**: `statistics.quantiles` (interpolated; differs by method argument).
 - **Edge**: no successful calls gives "n/a".
@@ -55,10 +55,16 @@ No `NEEDS CLARIFICATION` items remained after the spec and the plan input. The d
 
 ## R9. Markdown table
 
-- **Decision**: one row per configuration. Columns, in order: Configuration, Hit@k, Section hit@k, MRR, Cross-entitlement, Latency p50 (ms), Latency p95 (ms), Errors, then (only when an answer function exists) Correct refusal, False refusal, Citation validity. Rates show as percentages to one decimal with the count in the cell's raw form in the JSON; "n/a" where undefined. A footer line states k, question count, and question file name, followed by one notes line per "n/a" cell explaining why (for example "False refusal: n/a, no should-answer questions"). Section hit rate is "n/a" only when no result in the configuration carries a section; otherwise a result without a section never matches an expected section. When only some configurations have an answer function, the answer columns show "n/a" for the others.
+- **Decision**: one row per configuration. Columns, in order: Configuration, Hit@k, Section hit@k, MRR@k, Cross-entitlement, Latency p50 (ms), Latency p95 (ms), Errors, then (only when an answer function exists) Correct refusal, False refusal, Citation validity. Rates show as percentages to one decimal with the count in the cell's raw form in the JSON; "n/a" where undefined. A footer line states k, question count, and question file name, followed by one notes line per "n/a" cell explaining why (for example "False refusal: n/a, no should-answer questions"). Section hit rate is "n/a" only when no result in the configuration carries a section; otherwise a result without a section never matches an expected section. When only some configurations have an answer function, the answer columns show "n/a" for the others.
 - **Rationale**: pasteable into a README; primary metric first per FR-005a.
 
 ## R10. Dev tooling
 
 - **Decision**: uv for environment and lock; pytest; ruff for lint and format; type hints throughout, checked by review (no separate type checker required by the constitution).
 - **Rationale**: Principle VII.
+
+## R11. MRR at k
+
+- **Decision**: mean reciprocal rank is computed over the top k results only (MRR@k), the same cutoff as hit rate. An expected document ranked below k contributes 0. The table column is `MRR@k` (for example `MRR@5`); the JSON key stays `mrr`.
+- **Rationale**: one cutoff for all quality metrics keeps hit rate and MRR consistent and comparable across configurations. Only the cross-entitlement check looks at all returned results, because a result beyond k is still a result the user received.
+- **Alternatives**: MRR over all returned results (rejected: a rank-30 hit would score while hit rate says miss).

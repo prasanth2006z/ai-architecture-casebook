@@ -4,7 +4,7 @@ Public names exported from `evals`:
 
 ```python
 Configuration(name: str, retrieve: RetrieveFn, answer: AnswerFn | None = None)
-run_evaluation(questions: list[Question], configurations: list[Configuration], k: int = 5) -> EvaluationRun
+run_evaluation(questions: list[Question], configurations: list[Configuration], k: int = 5, question_file: str = "") -> EvaluationRun
 load_questions(path: Path) -> list[Question]          # raises QuestionFileError
 render_markdown(run: EvaluationRun) -> str
 write_results_json(run: EvaluationRun, path: Path) -> None

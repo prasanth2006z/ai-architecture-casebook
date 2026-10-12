@@ -29,6 +29,7 @@ The harness follows these definitions. Rationale and detail are in `specs/001-ev
 - Results are comparable across configurations and case studies, and one rule covers every error.
 - The cross-entitlement count means "results proven forbidden or not provably allowed", so it can exceed the number of documents on the not-entitled list.
 - With small question sets, p95 equals the maximum latency.
+- Quality metrics (hit rate, section hit rate, MRR@k) use the top k results only; the cross-entitlement check uses all returned results, regardless of rank.
 - Monitor: whether the exact-match rule produces false alarms once real document ids are used.
 
 ## Revisit when
