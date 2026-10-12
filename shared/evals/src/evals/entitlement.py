@@ -33,4 +33,23 @@ def check_entitlements(
 
     `results` are whatever a POC function returned, so items may be malformed.
     """
-    raise NotImplementedError("T010: the repository author writes this check")
+    forbidden = set(not_entitled_documents)  # lookup copy; the input list is not modified
+    cross_entitlement_count = 0
+    unverifiable_count = 0
+
+    for result in results:
+        doc_id = getattr(result, "document_id", None)  # malformed results may lack it
+
+        if not isinstance(doc_id, str) or not doc_id:
+            # Fail closed: we can't verify entitlement, so treat it as a leak.
+            unverifiable_count += 1
+            cross_entitlement_count += 1
+            continue
+
+        if doc_id in forbidden:  # exact, case-sensitive match
+            cross_entitlement_count += 1
+
+    return EntitlementCheck(
+        cross_entitlement_count=cross_entitlement_count,
+        unverifiable_count=unverifiable_count,
+    )
