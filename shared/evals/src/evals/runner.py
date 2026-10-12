@@ -1,7 +1,8 @@
 """Runs configurations over a question set and builds outcomes and summaries.
 
-See specs/001-eval-harness/contracts/plugin-api.md. Error handling for failing functions
-and unverifiable results is added in later tasks (T022, T033); answer metrics in T028.
+See specs/001-eval-harness/contracts/plugin-api.md. A returned result with an unverifiable
+document id fails closed here (T022). Exceptions from the POC's functions are handled in
+T033 and answer metrics are added in T028.
 """
 
 from __future__ import annotations
@@ -10,12 +11,13 @@ import time
 from collections.abc import Sequence
 
 from evals import metrics
-from evals.entitlement import check_entitlements
+from evals.entitlement import EntitlementCheck, check_entitlements
 from evals.models import (
     Configuration,
     ConfigurationResult,
     ConfigurationSummary,
     EvaluationRun,
+    OutcomeError,
     Question,
     QuestionOutcome,
     Rate,
@@ -56,6 +58,8 @@ def _evaluate(question: Question, configuration: Configuration, k: int) -> Quest
     latency_ms = (time.perf_counter() - started) * 1000
 
     entitlement = check_entitlements(results, question.not_entitled_documents)
+    if entitlement.unverifiable_count > 0:
+        return _unverifiable_outcome(question, configuration, results, entitlement)
     return QuestionOutcome(
         question_id=question.id,
         configuration=configuration.name,
@@ -74,8 +78,50 @@ def _evaluate(question: Question, configuration: Configuration, k: int) -> Quest
     )
 
 
+def _unverifiable_outcome(
+    question: Question,
+    configuration: Configuration,
+    results: list[object],  # may hold malformed items
+    entitlement: EntitlementCheck,
+) -> QuestionOutcome:
+    """Fail closed: unverifiable results count as cross-entitlement, the question is an error.
+
+    The question scores as a miss for hit rate, section hit rate and MRR (None where the
+    question is not part of the metric), and its latency is left out of the percentiles.
+    """
+    count = entitlement.unverifiable_count
+    noun = "result has" if count == 1 else "results have"
+    error = OutcomeError(
+        stage="validate",
+        type="UnverifiableDocumentId",
+        message=(
+            f"{count} returned {noun} a missing, empty, or non-text document id; "
+            "entitlement cannot be verified, so each is counted as a cross-entitlement retrieval"
+        ),
+    )
+    has_document = question.expected_document is not None
+    has_section = has_document and question.expected_section is not None
+    return QuestionOutcome(
+        question_id=question.id,
+        configuration=configuration.name,
+        results=tuple(results),
+        document_hit=False if has_document else None,
+        section_hit=False if has_section else None,
+        reciprocal_rank=0.0 if has_document else None,
+        cross_entitlement_count=entitlement.cross_entitlement_count,
+        latency_ms=None,
+        refused=None,
+        refusal_correct=None,
+        false_refusal=None,
+        citations_valid=None,
+        error=error,
+    )
+
+
 def _summarize(name: str, outcomes: Sequence[QuestionOutcome]) -> ConfigurationSummary:
-    any_section_returned = any(r.section is not None for o in outcomes for r in o.results)
+    any_section_returned = any(
+        getattr(r, "section", None) is not None for o in outcomes for r in o.results
+    )
     latencies = [o.latency_ms for o in outcomes if o.latency_ms is not None]
     no_rate = Rate(numerator=0, denominator=0)  # answer metrics arrive with T028
     return ConfigurationSummary(

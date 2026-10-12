@@ -95,11 +95,11 @@ description: "Task list for the shared evaluation harness"
 
 ### Tests for User Story 2 (write first, confirm they fail)
 
-- [ ] T021 [P] [US2] Write failing run-level tests in `shared/evals/tests/test_runner_entitlement.py`: a forbidden document returned adds 1 per result to `cross_entitlement_count` and to the configuration total in the table; a forbidden document that is also the expected document is still counted; no forbidden results shows 0 in the table; a result with a missing, empty or non-text `document_id` is included in `cross_entitlement_count`, the question has `error.stage == "validate"`, `document_hit` is false, `section_hit` is false when an expected section exists, `reciprocal_rank` is 0, `latency_ms` is null, and the question stays in all denominators.
+- [X] T021 [P] [US2] Write failing run-level tests in `shared/evals/tests/test_runner_entitlement.py`: a forbidden document returned adds 1 per result to `cross_entitlement_count` and to the configuration total in the table; a forbidden document that is also the expected document is still counted; no forbidden results shows 0 in the table; a result with a missing, empty or non-text `document_id` is included in `cross_entitlement_count`, the question has `error.stage == "validate"`, `document_hit` is false, `section_hit` is false when an expected section exists, `reciprocal_rank` is 0, `latency_ms` is null, and the question stays in all denominators.
 
 ### Implementation for User Story 2
 
-- [ ] T022 [US2] Wire the fail-closed path into `shared/evals/src/evals/runner.py`: when `EntitlementCheck.unverifiable_count > 0`, record an error with stage `validate`, score the question as a miss for hit rate, section hit rate and MRR, null its latency, and still add all counted results to the total, per FR-007 and FR-014a (depends on T018, T021).
+- [X] T022 [US2] Wire the fail-closed path into `shared/evals/src/evals/runner.py`: when `EntitlementCheck.unverifiable_count > 0`, record an error with stage `validate`, score the question as a miss for hit rate, section hit rate and MRR, null its latency, and still add all counted results to the total, per FR-007 and FR-014a (depends on T018, T021).
 
 **Checkpoint**: User Stories 1 and 2 both work; the cross-entitlement count is proven through the runner.
 

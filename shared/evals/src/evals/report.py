@@ -125,10 +125,18 @@ def _error_dict(error: OutcomeError | None) -> dict[str, str] | None:
     return None if error is None else asdict(error)
 
 
+def _result_dict(result: object) -> dict[str, Any]:
+    """Serialize a returned result as it came, tolerating malformed ones (missing fields)."""
+    return {
+        field: getattr(result, field, None)
+        for field in ("document_id", "chunk_id", "score", "section")
+    }
+
+
 def _outcome_dict(outcome: QuestionOutcome) -> dict[str, Any]:
     return {
         "question_id": outcome.question_id,
-        "results": [asdict(result) for result in outcome.results],
+        "results": [_result_dict(result) for result in outcome.results],
         "document_hit": outcome.document_hit,
         "section_hit": outcome.section_hit,
         "reciprocal_rank": outcome.reciprocal_rank,
