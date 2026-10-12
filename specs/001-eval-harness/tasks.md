@@ -5,6 +5,8 @@ description: "Task list for the shared evaluation harness"
 
 # Tasks: Shared Evaluation Harness
 
+> **Status (2026-10-12):** Paused after US2. Next: T033 (error catching) before the first AWS POC, US4 before Post 1 POC 4, US3/US5/US6/polish before publishing Post 1.
+
 **Input**: Design documents from `/specs/001-eval-harness/`
 
 **Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/, quickstart.md
