@@ -1,5 +1,11 @@
 # Data Model: Synthetic HR Policy Dataset
 
+## Glossary
+
+- **Policy family**: one topic in one country, i.e. a current document and its superseded predecessor, if any (for example `business-travel-uk` and `business-travel-uk-v1`). A global topic is its own family. Each family has exactly one `current` document.
+- **Condition section**: a section that holds an eligibility condition or approval rule separate from the entitlement it qualifies (for example 3.2 qualifying 3.1). Marked in the value table as `condition_section`; topics without a split have none.
+- **Fallback document**: the entitled, current document a restricted question falls back to for a lower-grade asker (for example `relocation-standard-uk`).
+
 ## Entities
 
 ### Policy (a generated document)
@@ -54,11 +60,11 @@ Exactly the harness contract keys: `id`, `question`, `profile` (`country`, `grad
 
 The superseded set shares sections with its current version but differs in at least one number. The injection probe is `remote-work-uk` section 5.
 
-## Value table (`data/values.toml`)
+## Value table (`data/values/*.toml`)
 
-Keyed by topic, then country, then grade band (a `default` entry applies to both bands). Value names are template placeholders: `$country_name`, `$policy_code`, `$days`, `$weeks`, `$notice_days`, `$limit`, `$currency`, `$authority`, `$effective_date`, `$min_service_months`, and similar. A missing value fails the build.
+Keyed by topic, then country, then grade band (a `default` entry applies to both bands). Each topic entry also carries `version`, `effective_date` and, where the topic splits an entitlement from its condition, `condition_section`. Value names are template placeholders: `$country_name`, `$policy_code`, `$days`, `$weeks`, `$notice_days`, `$limit`, `$currency`, `$authority`, `$effective_date`, `$min_service_months`, and similar. A missing value fails the build.
 
-## Question table (`data/questions.toml`)
+## Question table (`data/questions/*.toml`)
 
 Per question: `id`, `question`, `country`, `grade_band`, `topic` (resolved to the asker's country document) or `expected_document`, `expected_section`, `refuse` (bool). No entitlement list in the table.
 

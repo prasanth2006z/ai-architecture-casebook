@@ -43,7 +43,7 @@ A small, deterministic Python generator, package `hr_dataset`, in `01-permission
 | III. Synthetic Data Only | Pass | Every policy and every sidecar is labeled synthetic; "Globex Corp" is the only company name. A validator check scans for a banned-pattern list (email addresses, phone numbers, URLs, and a small denylist of real company names) and requires the label. |
 | IV. Evaluation Is Mandatory | Pass | This feature produces the evaluation data. Its acceptance criteria become pytest tests plus the `validate` command. No quality claim without a check. |
 | V. Cost Control | Pass (not applicable) | No cloud resources, so no Terraform or teardown. README states cost: none. |
-| VI. Simplicity | Pass | Standard library only, plain dataclasses, `string.Template`, no templating engine. One value table file and one question table file. |
+| VI. Simplicity | Pass | Standard library only, plain dataclasses, `string.Template`, no templating engine. Value and question tables are small TOML files grouped by topic or category. |
 | VII. Python Standards | Pass | Python 3.12, uv, pytest, type hints (ruff `ANN`), small functions, `pyproject.toml` with lock file. |
 | VIII. Human Review (v1.0.1) | Gate for implementation | `hr_dataset/entitlement.py` is **security-critical** (it decides who may see which document, and its output is the scoring ground truth): the author writes it; tasks generate a failing test suite and a stub only. Template wording, value tables and question text are data that Claude may draft; the author reviews them. Everything else is covered by the author's normal review of every change. |
 | IX. Reproducibility | Pass | README runs from a fresh clone in under 10 minutes; `build --check` and a double-build test enforce identical output. See [quickstart.md](quickstart.md). |
@@ -78,8 +78,8 @@ specs/002-hr-policy-dataset/
 │   ├── uv.lock
 │   ├── README.md                     # run, validate, results (Principle IX)
 │   ├── data/
-│   │   ├── values.toml               # value table: per topic, per country, per grade band
-│   │   └── questions.toml            # question table (text, asker, topic key, section); no entitlement lists
+│   │   ├── values/*.toml             # value tables by topic group: per topic, per country, per grade band
+│   │   └── questions/*.toml          # question tables by category (text, asker, topic key, section); no entitlement lists
 │   ├── templates/                    # one Markdown template per topic (string.Template)
 │   │   ├── annual-leave.md
 │   │   └── ...

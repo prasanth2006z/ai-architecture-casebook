@@ -30,7 +30,7 @@ uv run hr-dataset build --check
 uv run pytest tests/test_reproducible.py
 ```
 
-Expected: exit code 0 and the test passes. Editing one value in `data/values.toml` and rerunning `--check` must report the changed file and exit 1; restore the value afterwards.
+Expected: exit code 0 and the test passes. Editing one value in a file under `data/values/` and rerunning `--check` must report the changed file and exit 1; restore the value afterwards.
 
 ## Scenario 3: failure conditions are present (SC-007)
 
