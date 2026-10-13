@@ -32,6 +32,6 @@
 ## Notes
 
 - Re-run 2026-10-12 after adding the country-as-access-restriction and probe-split decisions: all items still pass; no clarification markers.
-- ADR-002 is cited from the user's instruction; the file is not in the repo yet, so the spec states the rule in full rather than relying on it.
+- FR-004a links to [ADR-002](../../../01-permission-aware-rag/docs/adr/ADR-002-access-control-in-retrieval.md), now in the repo; the spec still states the access rule in full.
 
 - The question-file contract is referenced by path because the request requires compatibility with it.
