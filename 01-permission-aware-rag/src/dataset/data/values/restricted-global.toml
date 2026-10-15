@@ -1,0 +1,120 @@
+# Value tables for restricted (grade band G7+ only) and global (both countries) topics.
+# SYNTHETIC DATA. Format: see leave.toml.
+# restricted = true means the document is visible to grade band G7+ only.
+# scope = "global" means one document for all locations; its values sit under [topic.global].
+
+[exec-relocation]
+title = "Executive Relocation Policy"
+area = "executive"
+restricted = true
+version = "1.0"
+effective_date = "2026-06-01"
+
+[exec-relocation.uk]
+policy_code = "HR-XE-UK-001"
+allowance = 40000
+housing_months = 6
+tax_advice_years = 2
+family_flights = 4
+
+[exec-relocation.in]
+policy_code = "HR-XE-IN-001"
+allowance = 2500000
+housing_months = 4
+tax_advice_years = 2
+family_flights = 2
+
+[exec-compensation]
+title = "Executive Compensation Policy"
+area = "executive"
+restricted = true
+version = "1.0"
+effective_date = "2026-06-01"
+
+[exec-compensation.uk]
+policy_code = "HR-XE-UK-002"
+bonus_percent = 40
+vesting_years = 4
+clawback_months = 24
+review_month = "March"
+
+[exec-compensation.in]
+policy_code = "HR-XE-IN-002"
+bonus_percent = 35
+vesting_years = 3
+clawback_months = 18
+review_month = "April"
+
+[exec-travel]
+title = "Executive Travel Policy"
+area = "executive"
+restricted = true
+version = "1.0"
+effective_date = "2026-06-01"
+
+[exec-travel.uk]
+policy_code = "HR-XE-UK-003"
+flight_class = "business class"
+hotel_limit = 450
+car_service_limit = 150
+
+[exec-travel.in]
+policy_code = "HR-XE-IN-003"
+flight_class = "business class"
+hotel_limit = 30000
+car_service_limit = 12000
+
+[exec-health-screening]
+title = "Executive Health Screening Policy"
+area = "executive"
+restricted = true
+version = "1.0"
+effective_date = "2026-06-01"
+
+[exec-health-screening.uk]
+policy_code = "HR-XE-UK-004"
+screening_budget = 1800
+interval_months = 12
+provider_note = "Screening is carried out by a private clinic chosen from the approved list."
+
+[exec-health-screening.in]
+policy_code = "HR-XE-IN-004"
+screening_budget = 120000
+interval_months = 12
+provider_note = "Screening is carried out by a private hospital chosen from the approved list."
+
+[code-of-conduct]
+title = "Code of Conduct"
+area = "global"
+scope = "global"
+version = "1.0"
+effective_date = "2026-01-01"
+
+[code-of-conduct.global]
+policy_code = "HR-GL-001"
+report_days = 5
+training_months = 12
+
+[anti-harassment]
+title = "Anti-Harassment Policy"
+area = "global"
+scope = "global"
+version = "1.0"
+effective_date = "2026-01-01"
+
+[anti-harassment.global]
+policy_code = "HR-GL-002"
+acknowledge_days = 2
+investigate_days = 30
+
+[data-privacy-for-hr]
+title = "Data Privacy for HR Records"
+area = "global"
+scope = "global"
+version = "1.0"
+effective_date = "2026-01-01"
+
+[data-privacy-for-hr.global]
+policy_code = "HR-GL-003"
+retention_years = 6
+request_days = 30

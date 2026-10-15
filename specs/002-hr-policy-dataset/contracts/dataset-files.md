@@ -64,11 +64,12 @@ Keys sorted, two-space indent. Field rules are in [data-model.md](../data-model.
 Conforms to `specs/001-eval-harness/contracts/question-file.md`: required keys `id`, `question`, `profile` (`country`, `grade_band`), `should_refuse`, `not_entitled_documents`; optional `expected_document`, `expected_section`. No other keys (unknown keys are rejected). Keys are written in the order shown below; `not_entitled_documents` is sorted.
 
 ```json
-{"id": "c03", "question": "How many weeks of parental leave do I get?", "profile": {"country": "IN", "grade_band": "G1-6"}, "expected_document": "parental-leave-in", "expected_section": "3.1", "should_refuse": false, "not_entitled_documents": ["annual-leave-uk", "exec-compensation-in", "..."]}
+{"id": "c10", "question": "How many weeks of parental leave do I get?", "profile": {"country": "IN", "grade_band": "G1-6"}, "expected_document": "parental-leave-in", "expected_section": "3.1", "should_refuse": false, "not_entitled_documents": ["annual-leave-uk", "exec-compensation-in", "..."]}
 ```
 
 Additional conventions of this dataset:
 
+- Within `c`, ids `c01`-`c08` name the asker's country in the question text and `c09`-`c15` name no country.
 - Category is the id prefix: `s` single-country, `c` country-differing, `o` out-of-scope, `p` entitlement probe; two-digit number.
 - Refusals (`o01-o10`, `p04-p05`) have `should_refuse` true, `expected_document` null and `expected_section` null.
 - The question text never names a document id or a section number.

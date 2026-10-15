@@ -1,0 +1,18 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK",
+      "IN"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "data-privacy-for-hr-global",
+    "effective_date": "2026-01-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Data Privacy for HR Records",
+    "version": "1.0"
+  }
+}

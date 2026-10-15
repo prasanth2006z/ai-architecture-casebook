@@ -71,7 +71,7 @@ Per question: `id`, `question`, `country`, `grade_band`, `topic` (resolved to th
 | Id prefix | Count | Rule |
 |-----------|-------|------|
 | `s01-s30` | 30 | One country; expected document is current and entitled; at least 6 target a superseded family and 8 target a split rule/condition |
-| `c01-c15` | 15 | Topic exists in both countries; expected document is the asker's own country |
+| `c01-c15` | 15 | Topic exists in both countries; expected document is the asker's own country. `c01-c08` name the country in the question text; `c09-c15` do not (the id range is the group, so POC 2 can report both) |
 | `o01-o10` | 10 | Out of scope; `should_refuse` true; expected document and section null |
 | `p01-p05` | 5 | `p01-p03` fallback to an entitled current document; `p04-p05` refusals; the restricted document is in the not-entitled list |
 

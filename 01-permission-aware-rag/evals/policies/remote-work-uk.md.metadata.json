@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "remote-work-uk",
+    "effective_date": "2026-07-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Remote Work Policy (United Kingdom)",
+    "version": "2.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "retirement-savings-uk",
+    "effective_date": "2026-04-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Retirement Savings Policy (United Kingdom)",
+    "version": "1.0"
+  }
+}

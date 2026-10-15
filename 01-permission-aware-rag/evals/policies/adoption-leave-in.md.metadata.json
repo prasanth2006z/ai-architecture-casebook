@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "IN"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "adoption-leave-in",
+    "effective_date": "2026-02-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Adoption Leave Policy (India)",
+    "version": "1.0"
+  }
+}

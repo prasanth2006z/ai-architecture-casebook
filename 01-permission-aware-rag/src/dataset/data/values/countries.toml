@@ -1,0 +1,28 @@
+# Constants shared by every country document. SYNTHETIC DATA: Globex Corp is a fictional company.
+# Placeholders available to every template: $company, $country, $location, $currency,
+# $currency_symbol, $portal, $service_desk.
+
+[uk]
+company = "Globex Corp"
+country = "United Kingdom"
+location = "the United Kingdom"
+currency = "GBP"
+currency_symbol = "£"
+portal = "the Globex HR portal"
+service_desk = "the Globex HR Service Desk"
+
+[in]
+company = "Globex Corp"
+country = "India"
+location = "India"
+currency = "INR"
+currency_symbol = "₹"
+portal = "the Globex HR portal"
+service_desk = "the Globex HR Service Desk"
+
+[global]
+company = "Globex Corp"
+country = "all Globex locations"
+country_scope = "all Globex locations"
+service_desk = "the Globex HR Service Desk"
+portal = "the Globex HR portal"

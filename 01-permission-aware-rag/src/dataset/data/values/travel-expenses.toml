@@ -1,0 +1,122 @@
+# Value tables for the travel and expenses topics. SYNTHETIC DATA. Format: see leave.toml.
+
+[business-travel]
+title = "Business Travel Policy"
+area = "travel"
+version = "2.0"
+effective_date = "2026-07-01"
+condition_section = "3.2"
+
+[business-travel.uk]
+policy_code = "HR-TR-UK-001"
+short_haul_hours = 6
+hotel_limit = { "G1-6" = 140, "G7+" = 200 }
+approval_threshold = 1500
+approval_days = 5
+booking_channel = "the Globex travel desk"
+
+[business-travel.in]
+policy_code = "HR-TR-IN-001"
+short_haul_hours = 5
+hotel_limit = { "G1-6" = 9000, "G7+" = 14000 }
+approval_threshold = 120000
+approval_days = 3
+booking_channel = "the Globex travel desk"
+
+[travel-booking]
+title = "Travel Booking Policy"
+area = "travel"
+version = "1.0"
+effective_date = "2026-03-01"
+
+[travel-booking.uk]
+policy_code = "HR-TR-UK-002"
+advance_days = 14
+change_fee_limit = 100
+rail_class = "standard class"
+cancel_hours = 48
+
+[travel-booking.in]
+policy_code = "HR-TR-IN-002"
+advance_days = 7
+change_fee_limit = 8000
+rail_class = "air-conditioned second class"
+cancel_hours = 24
+
+[relocation-standard]
+title = "Standard Relocation Policy"
+area = "travel"
+version = "1.0"
+effective_date = "2026-03-01"
+condition_section = "3.2"
+
+[relocation-standard.uk]
+policy_code = "HR-TR-UK-003"
+allowance = 5000
+temp_housing_weeks = 4
+repay_months = 12
+claim_days = 60
+
+[relocation-standard.in]
+policy_code = "HR-TR-IN-003"
+allowance = 300000
+temp_housing_weeks = 3
+repay_months = 18
+claim_days = 45
+
+[expense-claims]
+title = "Expense Claims Policy"
+area = "expenses"
+version = "2.0"
+effective_date = "2026-07-01"
+condition_section = "3.2"
+
+[expense-claims.uk]
+policy_code = "HR-EX-UK-001"
+claim_days = 30
+receipt_limit = 25
+approval_limit = 500
+pay_days = 10
+
+[expense-claims.in]
+policy_code = "HR-EX-IN-001"
+claim_days = 45
+receipt_limit = 2000
+approval_limit = 40000
+pay_days = 7
+
+[meal-allowance]
+title = "Meal Allowance Policy"
+area = "expenses"
+version = "1.0"
+effective_date = "2026-01-15"
+
+[meal-allowance.uk]
+policy_code = "HR-EX-UK-002"
+daily_meal = { "G1-6" = 30, "G7+" = 45 }
+min_trip_hours = 8
+alcohol_note = "Alcohol is not reimbursable."
+
+[meal-allowance.in]
+policy_code = "HR-EX-IN-002"
+daily_meal = { "G1-6" = 2000, "G7+" = 3000 }
+min_trip_hours = 6
+alcohol_note = "Alcohol is not reimbursable."
+
+[mobile-reimbursement]
+title = "Mobile Phone Reimbursement Policy"
+area = "expenses"
+version = "1.0"
+effective_date = "2026-01-15"
+
+[mobile-reimbursement.uk]
+policy_code = "HR-EX-UK-003"
+monthly_limit = 30
+min_business_percent = 30
+review_months = 12
+
+[mobile-reimbursement.in]
+policy_code = "HR-EX-IN-003"
+monthly_limit = 1500
+min_business_percent = 40
+review_months = 6

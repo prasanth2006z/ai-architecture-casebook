@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "IN"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "expense-claims-in",
+    "effective_date": "2026-07-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Expense Claims Policy (India)",
+    "version": "2.0"
+  }
+}

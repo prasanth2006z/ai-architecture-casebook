@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "IN"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "meal-allowance-in",
+    "effective_date": "2026-01-15",
+    "status": "current",
+    "synthetic": true,
+    "title": "Meal Allowance Policy (India)",
+    "version": "1.0"
+  }
+}

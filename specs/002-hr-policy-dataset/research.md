@@ -22,7 +22,7 @@ All Technical Context items were resolved from the user's input and the existing
 
 ## R4. Templating and value table
 
-- **Decision**: `string.Template` (`$name`) templates, one per topic, in `templates/`; values in one TOML file (`tomllib`), keyed `topic.country.grade_band` with a `default` grade entry. Country-differing wording is limited to values (numbers, country names, policy codes, authority names), so UK and IN versions of a topic come from the same template and are near-identical by construction (FR-002).
+- **Decision**: `string.Template` (`$name`) templates, one per topic, in `templates/`; values in TOML files (`tomllib`) under `data/values/`, keyed `topic.country`; a value written as `{ "G1-6" = a, "G7+" = b }` is flattened to `<key>_g1_6` and `<key>_g7_plus`, which gives the grade-band dimension; shared country constants sit in `countries.toml`. Country-differing wording is limited to values (numbers, country names, policy codes, authority names), so UK and IN versions of a topic come from the same template and are near-identical by construction (FR-002).
 - **Rationale**: no dependencies, deterministic, easy for the author to review. `Template.substitute` (not `safe_substitute`) so a missing value fails the build.
 - **Alternatives**: Jinja2 (rejected: runtime dependency, constitution VI); Python f-strings in code (rejected: mixes content with logic).
 
@@ -41,7 +41,7 @@ All Technical Context items were resolved from the user's input and the existing
 - **Rationale**: the spec requires entitlement lists to match the metadata; deriving them removes the hand-copied-twice failure. Validation re-derives them from the sidecars read back from disk and compares.
 - **Id convention**: the question file contract rejects unknown keys, so the category cannot be a field. It is encoded in the id prefix: `s01-s30` single-country, `c01-c15` country-differing, `o01-o10` out-of-scope, `p01-p05` entitlement probes. Validation counts by prefix.
 - **Probes**: `p01-p03` expect an entitled current fallback (restricted topic asked by a G1-6 user; fallback = standard relocation, business travel and health insurance policies of the asker's country); `p04-p05` ask about executive compensation as G1-6 users (one UK, one IN), are refusals, and have `expected_document` null.
-- **Country-differing**: 8 UK askers and 7 IN askers across 15 distinct topics where both country versions exist; validation checks the expected document is the asker's own country version.
+- **Country-differing**: 8 UK askers and 7 IN askers across 15 distinct topics where both country versions exist; validation checks the expected document is the asker's own country version. The first 8 (`c01-c08`) name the country in the question text and the last 7 (`c09-c15`) do not, so POC 2 can report named versus unnamed country by id range.
 
 ## R7. Determinism
 

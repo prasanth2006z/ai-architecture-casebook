@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "mobile-reimbursement-uk",
+    "effective_date": "2026-01-15",
+    "status": "current",
+    "synthetic": true,
+    "title": "Mobile Phone Reimbursement Policy (United Kingdom)",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "IN"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "parental-leave-in",
+    "effective_date": "2026-07-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Parental Leave Policy (India)",
+    "version": "2.0"
+  }
+}

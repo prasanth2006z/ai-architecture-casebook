@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "home-office-equipment-uk",
+    "effective_date": "2026-05-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Home Office Equipment Policy (United Kingdom)",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "learning-budget-uk",
+    "effective_date": "2026-04-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Learning Budget Policy (United Kingdom)",
+    "version": "1.0"
+  }
+}

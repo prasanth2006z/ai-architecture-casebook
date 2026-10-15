@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "carers-leave-uk",
+    "effective_date": "2026-02-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Carers Leave Policy (United Kingdom)",
+    "version": "1.0"
+  }
+}

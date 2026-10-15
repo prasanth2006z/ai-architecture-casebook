@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK"
+    ],
+    "allowed_grades": [
+      "G7+"
+    ],
+    "document_id": "exec-health-screening-uk",
+    "effective_date": "2026-06-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Executive Health Screening Policy (United Kingdom)",
+    "version": "1.0"
+  }
+}

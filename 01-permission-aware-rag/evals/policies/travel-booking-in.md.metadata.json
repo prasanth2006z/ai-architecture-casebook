@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "IN"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "travel-booking-in",
+    "effective_date": "2026-03-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Travel Booking Policy (India)",
+    "version": "1.0"
+  }
+}

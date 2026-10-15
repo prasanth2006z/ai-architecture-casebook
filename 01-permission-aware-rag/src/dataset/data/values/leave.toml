@@ -1,0 +1,156 @@
+# Value tables for the leave and parental-leave topics. SYNTHETIC DATA.
+#
+# Format: [topic] holds topic-level values shared by both countries (title, version,
+# effective_date, condition_section). [topic.uk] and [topic.in] hold the country values.
+# A value written as { "G1-6" = a, "G7+" = b } is flattened to <key>_g1_6 and <key>_g7_plus.
+
+[annual-leave]
+title = "Annual Leave Policy"
+area = "leave"
+version = "1.0"
+effective_date = "2026-01-01"
+condition_section = "3.2"
+
+[annual-leave.uk]
+policy_code = "HR-LV-UK-001"
+days = { "G1-6" = 25, "G7+" = 28 }
+holidays = 8
+min_service_months = 3
+notice_days = 14
+response_days = 3
+carry_over_days = 5
+carry_over_deadline = "31 March"
+
+[annual-leave.in]
+policy_code = "HR-LV-IN-001"
+days = { "G1-6" = 24, "G7+" = 27 }
+holidays = 10
+min_service_months = 6
+notice_days = 7
+response_days = 2
+carry_over_days = 10
+carry_over_deadline = "30 June"
+
+[sick-leave]
+title = "Sick Leave Policy"
+area = "leave"
+version = "1.0"
+effective_date = "2026-01-01"
+
+[sick-leave.uk]
+policy_code = "HR-LV-UK-002"
+sick_days = 10
+report_by = "10:00 on the first day of absence"
+cert_days = 7
+full_pay_days = 5
+
+[sick-leave.in]
+policy_code = "HR-LV-IN-002"
+sick_days = 12
+report_by = "09:30 on the first day of absence"
+cert_days = 3
+full_pay_days = 12
+
+[public-holidays]
+title = "Public Holidays Policy"
+area = "leave"
+version = "1.0"
+effective_date = "2026-01-01"
+
+[public-holidays.uk]
+policy_code = "HR-LV-UK-003"
+holidays = 8
+calendar_month = "November"
+holiday_rate = "1.5"
+floating_days = 1
+
+[public-holidays.in]
+policy_code = "HR-LV-IN-003"
+holidays = 10
+calendar_month = "December"
+holiday_rate = "2"
+floating_days = 2
+
+[special-leave]
+title = "Special Leave Policy"
+area = "leave"
+version = "1.0"
+effective_date = "2026-01-01"
+
+[special-leave.uk]
+policy_code = "HR-LV-UK-004"
+bereavement_days = 5
+marriage_days = 3
+civic_days = 2
+notice_days = 5
+
+[special-leave.in]
+policy_code = "HR-LV-IN-004"
+bereavement_days = 3
+marriage_days = 5
+civic_days = 1
+notice_days = 10
+
+[parental-leave]
+title = "Parental Leave Policy"
+area = "parental"
+version = "2.0"
+effective_date = "2026-07-01"
+condition_section = "3.2"
+
+[parental-leave.uk]
+policy_code = "HR-PL-UK-001"
+weeks = 26
+min_service_months = 12
+paid_weeks = 16
+pay_percent = 80
+notice_weeks = 15
+
+[parental-leave.in]
+policy_code = "HR-PL-IN-001"
+weeks = 20
+min_service_months = 6
+paid_weeks = 20
+pay_percent = 100
+notice_weeks = 8
+
+[adoption-leave]
+title = "Adoption Leave Policy"
+area = "parental"
+version = "1.0"
+effective_date = "2026-02-01"
+condition_section = "3.2"
+
+[adoption-leave.uk]
+policy_code = "HR-PL-UK-002"
+weeks = 20
+min_service_months = 9
+paid_weeks = 12
+pay_percent = 80
+notice_days = 28
+
+[adoption-leave.in]
+policy_code = "HR-PL-IN-002"
+weeks = 12
+min_service_months = 6
+paid_weeks = 12
+pay_percent = 100
+notice_days = 14
+
+[carers-leave]
+title = "Carers Leave Policy"
+area = "parental"
+version = "1.0"
+effective_date = "2026-02-01"
+
+[carers-leave.uk]
+policy_code = "HR-PL-UK-003"
+days = 5
+notice_hours = 24
+emergency_days = 2
+
+[carers-leave.in]
+policy_code = "HR-PL-IN-003"
+days = 7
+notice_hours = 48
+emergency_days = 3

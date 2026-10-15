@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "IN"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "home-office-equipment-in",
+    "effective_date": "2026-05-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Home Office Equipment Policy (India)",
+    "version": "1.0"
+  }
+}

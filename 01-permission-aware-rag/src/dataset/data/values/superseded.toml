@@ -1,0 +1,43 @@
+# Superseded older versions. SYNTHETIC DATA.
+# Each entry reuses the template and values of its current document and overrides the numbers
+# that changed. The current document carries version 2.0 and a later effective date.
+# The document id is <topic>-<country>-v1; the policy code is the current code plus "-V1".
+
+[[superseded]]
+topic = "business-travel"
+country = "uk"
+version = "1.0"
+effective_date = "2025-07-01"
+[superseded.overrides]
+short_haul_hours = 4
+approval_threshold = 1000
+hotel_limit = { "G1-6" = 120, "G7+" = 180 }
+
+[[superseded]]
+topic = "expense-claims"
+country = "in"
+version = "1.0"
+effective_date = "2025-07-01"
+[superseded.overrides]
+claim_days = 30
+receipt_limit = 500
+approval_limit = 25000
+
+[[superseded]]
+topic = "parental-leave"
+country = "uk"
+version = "1.0"
+effective_date = "2025-07-01"
+[superseded.overrides]
+weeks = 18
+min_service_months = 6
+paid_weeks = 12
+
+[[superseded]]
+topic = "remote-work"
+country = "in"
+version = "1.0"
+effective_date = "2025-07-01"
+[superseded.overrides]
+remote_days = 1
+notice_days = 30

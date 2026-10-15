@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "IN"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "health-insurance-in",
+    "effective_date": "2026-04-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Health Insurance Policy (India)",
+    "version": "1.0"
+  }
+}

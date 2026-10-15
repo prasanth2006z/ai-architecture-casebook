@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "sick-leave-uk",
+    "effective_date": "2026-01-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Sick Leave Policy (United Kingdom)",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "UK"
+    ],
+    "allowed_grades": [
+      "G1-6",
+      "G7+"
+    ],
+    "document_id": "travel-booking-uk",
+    "effective_date": "2026-03-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Travel Booking Policy (United Kingdom)",
+    "version": "1.0"
+  }
+}

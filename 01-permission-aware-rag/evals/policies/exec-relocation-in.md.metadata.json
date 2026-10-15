@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "allowed_countries": [
+      "IN"
+    ],
+    "allowed_grades": [
+      "G7+"
+    ],
+    "document_id": "exec-relocation-in",
+    "effective_date": "2026-06-01",
+    "status": "current",
+    "synthetic": true,
+    "title": "Executive Relocation Policy (India)",
+    "version": "1.0"
+  }
+}
