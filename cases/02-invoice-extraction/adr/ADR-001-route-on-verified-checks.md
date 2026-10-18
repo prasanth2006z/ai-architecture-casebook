@@ -21,7 +21,7 @@ Extraction output is a **claim**. Routing is decided by **deterministic checks a
 |---|---|---|
 | Arithmetic | Line items sum to subtotal; subtotal + tax = total (±0.01 per line) | Review |
 | Vendor match | Vendor found in vendor master **by tax ID**, never by name | Review |
-| PO match | PO exists, is open, amount within tolerance of remaining PO value | Review |
+| Purchase Order (PO) match | PO exists, is open, amount within tolerance of remaining PO value | Review |
 | Duplicate | Same vendor + invoice number, or same vendor + amount within 30 days | **Hard stop** |
 | Bank details | Bank account equals the one in vendor master | **Hard stop** |
 | Field confidence | Each field above its own threshold (ADR-002) | Review (that field) |
