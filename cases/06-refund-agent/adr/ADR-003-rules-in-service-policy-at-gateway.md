@@ -1,7 +1,7 @@
 # ADR-003: Refund rules live in the refund service; AgentCore Policy at the gateway is a second check
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-23
 - **Case:** 06 · A support agent that can issue refunds (AWS)
 - **Related:** ADR-002, ADR-006
 

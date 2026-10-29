@@ -1,7 +1,7 @@
 # ADR-001: Deterministic script first; the agent only works on remaining failures
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-30
 - **Case:** 07 · A loop agent that upgrades 300 repositories (Google Cloud)
 - **Related:** ADR-002, ADR-005
 

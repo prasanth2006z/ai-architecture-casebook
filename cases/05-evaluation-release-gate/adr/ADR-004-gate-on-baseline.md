@@ -1,7 +1,7 @@
 # ADR-004: Hard gates are absolute; soft gates compare with production
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-16
 - **Case:** 05 · Evaluation as a release gate (AWS)
 - **Related:** ADR-002, ADR-003
 

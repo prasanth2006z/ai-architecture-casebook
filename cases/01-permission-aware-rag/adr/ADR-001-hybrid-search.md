@@ -1,6 +1,6 @@
 # ADR-001: Use hybrid search on OpenSearch Serverless with a reranker
 
-Status: Accepted · Date: 2026-10-09
+Status: Accepted · Date: 2026-10-20
 
 ## Context
 HR policies exist in near-identical versions per country. The first chatbot confused them because, semantically, they are almost the same text. Retrieval must catch exact terms (country, policy code, grade) as well as paraphrased questions (requirement R3).

@@ -1,7 +1,7 @@
 # ADR-004: Filter every write, confirm shared notes, and let people see and delete memories
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-12-07
 - **Case:** 08 · Memory for an account-manager assistant (AWS)
 - **Related:** ADR-002
 

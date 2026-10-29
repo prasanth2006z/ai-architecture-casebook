@@ -1,7 +1,7 @@
 # ADR-006: The gateway never rewrites prompts and never silently falls back
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-09
 - **Case:** 04 · An LLM gateway that cut the bill (Google Cloud)
 - **Related:** ADR-001, ADR-003
 

@@ -1,7 +1,7 @@
 # ADR-003: Route by use case to a model tier; tier changes need a passing evaluation
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-09
 - **Case:** 04 · An LLM gateway that cut the bill (Google Cloud)
 - **Related:** Case 05 (evaluation as a release gate), ADR-006
 

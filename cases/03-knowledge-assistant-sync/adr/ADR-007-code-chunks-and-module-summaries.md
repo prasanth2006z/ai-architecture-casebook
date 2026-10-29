@@ -1,7 +1,7 @@
 # ADR-007: Chunk code by function, class and route; rebuild module summaries only when their input changes
 
 - **Status:** Accepted
-- **Date:** 2026-10-18
+- **Date:** 2026-11-02
 - **Case:** 03 · Keeping a team knowledge assistant in sync (GCP)
 - **Related:** ADR-002 (sync), ADR-003 (one representation per source)
 

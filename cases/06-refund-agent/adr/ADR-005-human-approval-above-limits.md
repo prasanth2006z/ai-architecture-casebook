@@ -1,7 +1,7 @@
 # ADR-005: Above limits, a person decides through a task-token approval queue
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-23
 - **Case:** 06 · A support agent that can issue refunds (AWS)
 - **Related:** Case 02 (review queue with `.waitForTaskToken`)
 

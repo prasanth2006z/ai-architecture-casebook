@@ -1,7 +1,7 @@
 # ADR-005: Expiry by default; reconfirm notes older than 90 days
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-12-07
 - **Case:** 08 · Memory for an account-manager assistant (AWS)
 - **Related:** ADR-001
 

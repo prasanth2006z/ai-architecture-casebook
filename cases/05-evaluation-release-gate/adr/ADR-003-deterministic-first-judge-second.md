@@ -1,7 +1,7 @@
 # ADR-003: Deterministic checks first; a pinned, calibrated judge only for judgement
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-16
 - **Case:** 05 · Evaluation as a release gate (AWS)
 - **Related:** Case 01 ADR-002 (security from verified data, never from model output)
 

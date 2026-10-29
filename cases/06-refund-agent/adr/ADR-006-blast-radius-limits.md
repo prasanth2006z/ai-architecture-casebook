@@ -1,7 +1,7 @@
 # ADR-006: Bound the blast radius: per-refund, per-customer and daily caps, a kill switch, and a 2% audit
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-23
 - **Case:** 06 · A support agent that can issue refunds (AWS)
 - **Related:** Case 02 (random audit)
 

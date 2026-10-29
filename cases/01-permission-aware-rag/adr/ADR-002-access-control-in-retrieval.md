@@ -1,6 +1,6 @@
 # ADR-002: Enforce access control with an explicit metadata filter built from the token
 
-Status: Accepted · Date: 2026-10-09
+Status: Accepted · Date: 2026-10-20
 
 ## Context
 A junior employee received restricted executive policy text. Entitlements depend on country and grade, which come from the corporate identity provider through Cognito (requirement R1). A user may only see documents whose country list includes their country and whose grade bands include their grade.

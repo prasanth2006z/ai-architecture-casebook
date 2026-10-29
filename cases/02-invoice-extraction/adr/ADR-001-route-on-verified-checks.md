@@ -1,7 +1,7 @@
 # ADR-001: Route invoices on verified checks, not model confidence
 
 - **Status:** Accepted
-- **Date:** 2026-10-17
+- **Date:** 2026-10-26
 - **Case:** 02 · Invoice extraction with human review (AWS)
 - **Related:** Case 01 · ADR-002 (access control in retrieval: security comes from verified data, never from model output)
 

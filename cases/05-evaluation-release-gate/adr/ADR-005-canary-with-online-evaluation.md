@@ -1,7 +1,7 @@
 # ADR-005: Canary deployment with online evaluation and automatic rollback
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-16
 - **Case:** 05 · Evaluation as a release gate (AWS)
 - **Related:** ADR-003, ADR-004
 

@@ -1,7 +1,7 @@
 # ADR-004: Three cache layers, plus batch; never cache across user permissions
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-09
 - **Case:** 04 · An LLM gateway that cut the bill (Google Cloud)
 - **Related:** Case 01 (access decided by data), ADR-003
 

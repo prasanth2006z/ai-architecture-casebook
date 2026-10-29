@@ -1,7 +1,7 @@
 # ADR-001: All model calls go through one gateway; only the gateway can call models
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-09
 - **Case:** 04 · An LLM gateway that cut the bill (Google Cloud)
 - **Related:** ADR-002 (metering), ADR-005 (budgets)
 

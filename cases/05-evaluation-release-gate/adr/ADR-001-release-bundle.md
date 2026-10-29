@@ -1,7 +1,7 @@
 # ADR-001: Version everything that changes an answer as one release bundle
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-16
 - **Case:** 05 · Evaluation as a release gate (AWS)
 - **Related:** Case 01, Case 04 ADR-003 (tier changes are releases)
 

@@ -1,7 +1,7 @@
 # ADR-004: Propose, confirm, commit; the customer's click commits; quote ID is the idempotency key
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-23
 - **Case:** 06 · A support agent that can issue refunds (AWS)
 - **Related:** ADR-002, ADR-005
 

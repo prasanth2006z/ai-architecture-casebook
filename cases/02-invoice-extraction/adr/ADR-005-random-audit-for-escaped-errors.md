@@ -1,7 +1,7 @@
 # ADR-005: Measure escaped errors with a random audit of auto-approved invoices
 
 - **Status:** Accepted
-- **Date:** 2026-10-17
+- **Date:** 2026-10-26
 - **Case:** 02 · Invoice extraction with human review (AWS)
 - **Related:** ADR-001 (routing), ADR-002 (thresholds), ADR-003 (extractor swaps)
 

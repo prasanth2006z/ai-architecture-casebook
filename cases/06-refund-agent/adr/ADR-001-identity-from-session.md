@@ -1,7 +1,7 @@
 # ADR-001: Customer identity comes from the session; tools filter by it
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-23
 - **Case:** 06 · A support agent that can issue refunds (AWS)
 - **Related:** Case 01 (access decided by data), ADR-002
 

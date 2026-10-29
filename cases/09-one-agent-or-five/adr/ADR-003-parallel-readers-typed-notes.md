@@ -1,7 +1,7 @@
 # ADR-003: Parallel readers with isolated contexts return typed notes; the writer cites note IDs
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-12-14
 - **Case:** 09 · One agent or five? A research assistant (Google Cloud)
 - **Related:** ADR-004
 

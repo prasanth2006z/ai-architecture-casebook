@@ -1,7 +1,7 @@
 # ADR-002: Confidence thresholds per field, set by the cost of error
 
 - **Status:** Accepted
-- **Date:** 2026-10-17
+- **Date:** 2026-10-26
 - **Case:** 02 · Invoice extraction with human review (AWS)
 - **Related:** ADR-001 (routing), ADR-005 (golden set and audit)
 

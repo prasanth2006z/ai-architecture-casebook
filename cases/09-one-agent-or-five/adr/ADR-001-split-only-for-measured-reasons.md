@@ -1,7 +1,7 @@
 # ADR-001: One agent by default; split only for parallel work, a clean context or a different permission
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-12-14
 - **Case:** 09 · One agent or five? A research assistant (Google Cloud)
 - **Related:** ADR-002, ADR-005
 

@@ -1,7 +1,7 @@
 # ADR-003: Retrieval is scoped to one account, after a CRM access check in code
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-12-07
 - **Case:** 08 · Memory for an account-manager assistant (AWS)
 - **Related:** Case 01 ADR-002 (access decided by data, not the model)
 

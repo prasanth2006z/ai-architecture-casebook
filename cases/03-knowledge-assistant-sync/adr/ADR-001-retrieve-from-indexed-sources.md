@@ -1,7 +1,7 @@
 # ADR-001: Retrieve from indexed sources instead of a hand-built summary
 
 - **Status:** Accepted
-- **Date:** 2026-10-18
+- **Date:** 2026-11-02
 - **Case:** 03 · Keeping a team knowledge assistant in sync (GCP)
 - **Related:** Case 01 · ADR-001 (hybrid search), Case 01 · ADR-003 (section-based chunking)
 

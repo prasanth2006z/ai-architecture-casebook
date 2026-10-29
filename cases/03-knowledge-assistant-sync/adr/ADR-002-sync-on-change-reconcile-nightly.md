@@ -1,7 +1,7 @@
 # ADR-002: Sync on change, reconcile on schedule
 
 - **Status:** Accepted
-- **Date:** 2026-10-18
+- **Date:** 2026-11-02
 - **Case:** 03 · Keeping a team knowledge assistant in sync (GCP)
 - **Related:** ADR-001, ADR-003
 

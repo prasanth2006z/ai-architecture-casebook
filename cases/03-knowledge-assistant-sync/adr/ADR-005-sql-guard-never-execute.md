@@ -1,7 +1,7 @@
 # ADR-005: Validate generated SQL against the live schema; never execute it
 
 - **Status:** Accepted
-- **Date:** 2026-10-18
+- **Date:** 2026-11-02
 - **Case:** 03 · Keeping a team knowledge assistant in sync (GCP)
 - **Related:** ADR-003 (schema catalog)
 

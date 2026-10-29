@@ -1,7 +1,7 @@
 # ADR-002: A golden set in three parts, with a hidden hold-out; incidents add items
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-16
 - **Case:** 05 · Evaluation as a release gate (AWS)
 - **Related:** ADR-003, ADR-004, Labs track (Lab 1)
 

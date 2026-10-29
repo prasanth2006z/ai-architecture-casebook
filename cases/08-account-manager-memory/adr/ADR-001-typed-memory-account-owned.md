@@ -1,7 +1,7 @@
 # ADR-001: Separate kinds of memory; account notes are owned by the account
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-12-07
 - **Case:** 08 · Memory for an account-manager assistant (AWS)
 - **Related:** ADR-003, ADR-005
 

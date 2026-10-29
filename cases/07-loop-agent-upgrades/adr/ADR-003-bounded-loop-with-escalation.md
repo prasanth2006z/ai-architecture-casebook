@@ -1,7 +1,7 @@
 # ADR-003: The loop is bounded in code and escalates with a useful note
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-30
 - **Case:** 07 · A loop agent that upgrades 300 repositories (Google Cloud)
 - **Related:** Case 04 ADR-005 (budgets and circuit breaker)
 

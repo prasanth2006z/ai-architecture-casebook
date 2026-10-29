@@ -1,6 +1,6 @@
 # ADR-003: Chunk by policy section, not by fixed token count
 
-Status: Accepted · Date: 2026-10-09
+Status: Accepted · Date: 2026-10-20
 
 ## Context
 HR policies are structured documents with numbered sections. A fixed 500-token split can separate an entitlement or a condition ("only after 12 months of service") from the rule it qualifies.

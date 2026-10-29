@@ -1,7 +1,7 @@
 # ADR-005: Choose the architecture with a task set, and re-run it when models or frameworks change
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-12-14
 - **Case:** 09 · One agent or five? A research assistant (Google Cloud)
 - **Related:** Case 05 (evaluation as a release gate)
 

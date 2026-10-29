@@ -1,7 +1,7 @@
 # ADR-003: Give each source its own representation
 
 - **Status:** Accepted
-- **Date:** 2026-10-18
+- **Date:** 2026-11-02
 - **Case:** 03 · Keeping a team knowledge assistant in sync (GCP)
 - **Related:** ADR-001, ADR-005, ADR-007 (code chunking details); Case 01 · ADR-003 (section-based chunking), Case 01 · ADR-002 (access control in retrieval)
 

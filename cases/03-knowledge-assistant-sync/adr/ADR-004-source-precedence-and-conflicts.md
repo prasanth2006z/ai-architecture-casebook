@@ -1,7 +1,7 @@
 # ADR-004: Each source is authoritative for one question; show conflicts
 
 - **Status:** Accepted
-- **Date:** 2026-10-18
+- **Date:** 2026-11-02
 - **Case:** 03 · Keeping a team knowledge assistant in sync (GCP)
 - **Related:** ADR-003
 

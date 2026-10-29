@@ -1,7 +1,7 @@
 # ADR-005: Waves with gates, exclude low-coverage repos from the agent, and require human review of agent changes
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-30
 - **Case:** 07 · A loop agent that upgrades 300 repositories (Google Cloud)
 - **Related:** ADR-001, ADR-002
 

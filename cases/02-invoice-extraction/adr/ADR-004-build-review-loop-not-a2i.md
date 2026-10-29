@@ -1,7 +1,7 @@
 # ADR-004: Build the review loop in-house instead of using Amazon A2I
 
 - **Status:** Accepted
-- **Date:** 2026-10-17
+- **Date:** 2026-10-26
 - **Case:** 02 · Invoice extraction with human review (AWS)
 - **Related:** ADR-001 (what gets reviewed)
 

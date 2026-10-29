@@ -1,7 +1,7 @@
 # ADR-004: Run the fleet as resumable jobs with per-repository state
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-11-30
 - **Case:** 07 · A loop agent that upgrades 300 repositories (Google Cloud)
 
 ## Context

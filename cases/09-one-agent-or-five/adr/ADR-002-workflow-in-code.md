@@ -1,7 +1,7 @@
 # ADR-002: A fixed workflow in code with limits; agents do not decide the order of work
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-12-14
 - **Case:** 09 · One agent or five? A research assistant (Google Cloud)
 - **Related:** Case 07 ADR-003 (loop control in code)
 

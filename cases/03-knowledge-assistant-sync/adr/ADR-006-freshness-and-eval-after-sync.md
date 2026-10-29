@@ -1,7 +1,7 @@
 # ADR-006: Show freshness on every answer; evaluate after every sync
 
 - **Status:** Accepted
-- **Date:** 2026-10-18
+- **Date:** 2026-11-02
 - **Case:** 03 · Keeping a team knowledge assistant in sync (GCP)
 - **Related:** ADR-002; Case 05 (evaluation as a release gate)
 

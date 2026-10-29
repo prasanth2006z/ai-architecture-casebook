@@ -1,7 +1,7 @@
 # ADR-004: Citations are verified by code against stored pages; failures are shown, not hidden
 
 - **Status:** Proposed
-- **Date:** 2026-10-26
+- **Date:** 2026-12-14
 - **Case:** 09 · One agent or five? A research assistant (Google Cloud)
 - **Related:** ADR-003
 
