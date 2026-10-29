@@ -3,7 +3,7 @@
 - **Status:** Proposed
 - **Date:** 2026-10-26
 - **Case:** 04 · An LLM gateway that cut the bill (Google Cloud)
-- **Related:** ADR-002 (metering), ADR-005 (budgets), Case 13 (shared LLM quota owner)
+- **Related:** ADR-002 (metering), ADR-005 (budgets)
 
 ## Context
 

@@ -3,7 +3,7 @@
 **Cloud:** Google Cloud · **Status:** Design (ADRs proposed), post ready · **Blog post:** *An LLM Gateway That Cut the Bill: Meter First, Then Route* (`post.md`)
 
 > Composite scenario. Apps, teams and numbers are illustrative planning figures, not benchmark results.
-> Links back to Case 01 (access decided by data, so no cross-user cache) and Case 13 (shared LLM quota owner); forward to Case 05 (evaluation gate for tier changes).
+> Links back to Case 01 (access decided by data, so no cross-user cache); forward to Case 05 (evaluation gate for tier changes).
 
 ![Cover](images/00-cover.png)
 
